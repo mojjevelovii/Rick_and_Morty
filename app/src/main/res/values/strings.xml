@@ -4,4 +4,8 @@
     <string name="characters">characters</string>
     <string name="locations">locations</string>
     <string name="episodes">episodes</string>
+    <string name="search_prompt_text">Start typing search text…</string>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+
 </resources>

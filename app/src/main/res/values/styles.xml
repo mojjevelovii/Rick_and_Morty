@@ -7,7 +7,7 @@
         <item name="textAllCaps">true</item>
         <item name="android:textStyle">bold</item>
         <item name="android:textAlignment">center</item>
-        <item name="android:textSize">@dimen/small_font_size</item>
+        <item name="android:textSize">@dimen/big_font_size</item>
     </style>
 
     <style name="mainButton" parent="mainHeaderText">
