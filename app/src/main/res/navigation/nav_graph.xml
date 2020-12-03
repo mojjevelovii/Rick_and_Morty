@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/nav_graph"
+    app:startDestination="@id/general_screen">
+
+    <fragment
+        android:id="@+id/general_screen"
+        android:name="ru.shumilova.rick_and_morty.mvp.view.general_screen.GeneralScreenFragment"
+        android:label="fragment_general_screen"
+        tools:layout="@layout/fragment_general_screen" />
+</navigation>

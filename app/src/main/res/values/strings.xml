@@ -1,3 +1,7 @@
 <resources>
-    <string name="app_name">Rick_and_Morty</string>
+    <string name="app_name">Rick and Morty</string>
+    <string name="the_guide_header">The Multiverse Guide</string>
+    <string name="characters">characters</string>
+    <string name="locations">locations</string>
+    <string name="episodes">episodes</string>
 </resources>

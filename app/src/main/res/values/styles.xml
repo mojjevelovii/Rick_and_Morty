@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <style name="mainHeaderText" parent="Widget.AppCompat.TextView">
+        <item name="android:textColor">@color/lime</item>
+        <item name="fontFamily">sans-serif-medium</item>
+        <item name="textAllCaps">true</item>
+        <item name="android:textStyle">bold</item>
+        <item name="android:textAlignment">center</item>
+        <item name="android:textSize">@dimen/small_font_size</item>
+    </style>
+
+    <style name="mainButton" parent="mainHeaderText">
+        <item name="android:backgroundTint">@color/cyan</item>
+        <item name="android:textColor">@color/indigo</item>
+        <item name="android:layout_marginTop">@dimen/half_margin</item>
+    </style>
+</resources>
