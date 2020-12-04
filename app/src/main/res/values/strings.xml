@@ -6,7 +6,6 @@
     <string name="episodes">episodes</string>
     <string name="search_prompt_text">Start typing search text…</string>
     <string name="character_status_head">Status: </string>
-    <string name="character_name_header">Morty Mart Manager Morty</string>
     <string name="character_species_head">Species: </string>
     <string name="character_gender_head">Gender: </string>
     <string name="character_origin_head">First seen in:</string>
