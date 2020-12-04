@@ -10,6 +10,14 @@
         <item name="android:textSize">@dimen/big_font_size</item>
     </style>
 
+    <style name="mainCharacterCardText" parent="Widget.AppCompat.TextView">
+        <item name="android:textColor">@color/cyan</item>
+        <item name="fontFamily">sans-serif-medium</item>
+        <item name="android:textAlignment">textStart</item>
+        <item name="android:textStyle">bold</item>
+        <item name="android:textSize">@dimen/medium_font_size</item>
+    </style>
+
     <style name="mainButton" parent="mainHeaderText">
         <item name="android:backgroundTint">@color/cyan</item>
         <item name="android:textColor">@color/indigo</item>

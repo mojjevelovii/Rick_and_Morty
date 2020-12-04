@@ -5,7 +5,12 @@
     <string name="locations">locations</string>
     <string name="episodes">episodes</string>
     <string name="search_prompt_text">Start typing search text…</string>
-    <!-- TODO: Remove or change this placeholder text -->
-    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="character_status_head">Status: </string>
+    <string name="character_name_header">Morty Mart Manager Morty</string>
+    <string name="character_species_head">Species: </string>
+    <string name="character_gender_head">Gender: </string>
+    <string name="character_origin_head">First seen in:</string>
+    <string name="character_episodes_header">Episodes</string>
+    <string name="character_location_head">Last known location:</string>
 
 </resources>

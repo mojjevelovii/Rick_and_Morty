@@ -25,7 +25,11 @@
         android:id="@+id/charactersFragment"
         android:name="ru.shumilova.rick_and_morty.mvp.view.characters_screen.CharactersFragment"
         android:label="fragment_characters"
-        tools:layout="@layout/fragment_characters" />
+        tools:layout="@layout/fragment_characters" >
+        <action
+            android:id="@+id/action_charactersFragment_to_characterCardFragment"
+            app:destination="@id/characterCardFragment" />
+    </fragment>
     <fragment
         android:id="@+id/locationsFragment"
         android:name="ru.shumilova.rick_and_morty.mvp.view.locations_screen.LocationsFragment"
@@ -36,4 +40,9 @@
         android:name="ru.shumilova.rick_and_morty.mvp.view.episodes_screen.EpisodesFragment"
         android:label="fragment_episodes"
         tools:layout="@layout/fragment_episodes" />
+    <fragment
+        android:id="@+id/characterCardFragment"
+        android:name="ru.shumilova.rick_and_morty.mvp.view.character_card.CharacterCardFragment"
+        android:label="fragment_character_card"
+        tools:layout="@layout/fragment_character_card" />
 </navigation>
