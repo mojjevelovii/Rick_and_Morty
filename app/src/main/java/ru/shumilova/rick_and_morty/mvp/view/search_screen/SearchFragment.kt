@@ -4,6 +4,7 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Toast
 import androidx.navigation.fragment.navArgs
 import io.reactivex.rxjava3.android.schedulers.AndroidSchedulers
 import kotlinx.android.synthetic.main.fragment_search.*
@@ -11,6 +12,7 @@ import moxy.MvpAppCompatFragment
 import moxy.ktx.moxyPresenter
 import ru.shumilova.rick_and_morty.App
 import ru.shumilova.rick_and_morty.R
+import ru.shumilova.rick_and_morty.mvp.model.entity.domain.CommonResponse
 import ru.shumilova.rick_and_morty.mvp.presenter.search_screen.SearchPresenter
 
 class SearchFragment : MvpAppCompatFragment(), ISearchView {
@@ -56,7 +58,7 @@ class SearchFragment : MvpAppCompatFragment(), ISearchView {
             }
     }
 
-    override fun <T> onGetResults(results: List<T>) {
-        print("CHARS ${results.size}")
+    override fun onGetResults(results: List<CommonResponse>) {
+        Toast.makeText(context, results.firstOrNull().toString(), Toast.LENGTH_SHORT).show()
     }
 }

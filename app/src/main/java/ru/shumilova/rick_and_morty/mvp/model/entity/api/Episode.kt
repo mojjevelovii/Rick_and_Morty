@@ -26,7 +26,7 @@ data class Episode(
 
     @SerializedName("characters")
     @Expose
-    val characters: List<String>? = null,
+    val characters: List<String?>? = null,
 
     @SerializedName("url")
     @Expose
