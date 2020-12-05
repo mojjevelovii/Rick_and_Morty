@@ -35,6 +35,7 @@
             android:layout_marginStart="@dimen/base_margins"
             android:layout_weight="1"
             android:autofillHints=""
+            android:textColorHint="@color/pastel_lime"
             android:backgroundTint="@color/cyan"
             android:hint="@string/search_prompt_text"
             android:importantForAutofill="no"

@@ -1,14 +1,16 @@
 package ru.shumilova.rick_and_morty.mvp.view.search_screen
 
 import android.os.Bundle
-import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.navigation.fragment.navArgs
+import kotlinx.android.synthetic.main.fragment_search.*
 import moxy.MvpAppCompatFragment
 import ru.shumilova.rick_and_morty.R
 
-class SearchFragment : MvpAppCompatFragment(), ISearchView{
+class SearchFragment : MvpAppCompatFragment(), ISearchView {
+    val args: SearchFragmentArgs by navArgs()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -24,7 +26,15 @@ class SearchFragment : MvpAppCompatFragment(), ISearchView{
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        when (args.searchType) {
+            SearchType.CHARACTERS -> setTitle(R.string.characters)
+            SearchType.LOCATIONS -> setTitle(R.string.locations)
+            SearchType.EPISODES -> setTitle(R.string.episodes)
+        }
+    }
 
+    private fun setTitle(header: Int) {
+        tv_header.setText(header)
     }
 
     companion object {

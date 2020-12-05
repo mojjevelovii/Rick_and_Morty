@@ -7,12 +7,12 @@ import com.google.gson.annotations.SerializedName
 import kotlinx.android.parcel.Parcelize
 
 @Parcelize
-data class CommonPagedResponse<T>(
+data class CharacterResponse(
     @SerializedName("info")
     @Expose
     val info: InfoResponse? = null,
 
     @SerializedName("results")
     @Expose
-    val results: List<T?>? = null
+    val results: List<Character?>? = null
 ) : Parcelable
