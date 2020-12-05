@@ -5,6 +5,5 @@ import moxy.viewstate.strategy.alias.AddToEndSingle
 
 @AddToEndSingle
 interface ISearchView : MvpView {
-
-
+    fun <T> onGetResults(results: List<T>)
 }

@@ -5,12 +5,21 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.navigation.fragment.navArgs
+import io.reactivex.rxjava3.android.schedulers.AndroidSchedulers
 import kotlinx.android.synthetic.main.fragment_search.*
 import moxy.MvpAppCompatFragment
+import moxy.ktx.moxyPresenter
+import ru.shumilova.rick_and_morty.App
 import ru.shumilova.rick_and_morty.R
+import ru.shumilova.rick_and_morty.mvp.presenter.search_screen.SearchPresenter
 
 class SearchFragment : MvpAppCompatFragment(), ISearchView {
-    val args: SearchFragmentArgs by navArgs()
+    private val args: SearchFragmentArgs by navArgs()
+
+    private val presenter: SearchPresenter by moxyPresenter {
+        SearchPresenter(AndroidSchedulers.mainThread(), args.searchType)
+            .apply { App.application.appComponent.inject(this) }
+    }
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -21,7 +30,7 @@ class SearchFragment : MvpAppCompatFragment(), ISearchView {
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        // Inflate the layout for this fragment
+
         return inflater.inflate(R.layout.fragment_search, container, false)
     }
 
@@ -31,6 +40,8 @@ class SearchFragment : MvpAppCompatFragment(), ISearchView {
             SearchType.LOCATIONS -> setTitle(R.string.locations)
             SearchType.EPISODES -> setTitle(R.string.episodes)
         }
+
+        presenter.getData(1)
     }
 
     private fun setTitle(header: Int) {
@@ -43,5 +54,9 @@ class SearchFragment : MvpAppCompatFragment(), ISearchView {
             SearchFragment().apply {
 
             }
+    }
+
+    override fun <T> onGetResults(results: List<T>) {
+        print("CHARS ${results.size}")
     }
 }

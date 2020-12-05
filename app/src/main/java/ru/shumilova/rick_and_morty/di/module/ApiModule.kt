@@ -8,7 +8,6 @@ import dagger.Provides
 import retrofit2.Retrofit
 import retrofit2.adapter.rxjava3.RxJava3CallAdapterFactory
 import retrofit2.converter.gson.GsonConverterFactory
-import ru.shumilova.rick_and_morty.App
 import ru.shumilova.rick_and_morty.mvp.model.api.IDataSource
 import javax.inject.Named
 import javax.inject.Singleton
