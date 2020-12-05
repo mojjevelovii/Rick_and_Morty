@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/nav_graph"
+    app:startDestination="@id/general_screen">
+
+    <fragment
+        android:id="@+id/general_screen"
+        android:name="ru.shumilova.rick_and_morty.mvp.view.general_screen.GeneralScreenFragment"
+        android:label="fragment_general_screen"
+        tools:layout="@layout/fragment_general_screen">
+        <action
+            android:id="@+id/action_to_search"
+            app:destination="@id/searchFragment"
+            app:enterAnim="@android:anim/fade_in"
+            app:exitAnim="@android:anim/fade_out"
+            app:popEnterAnim="@android:anim/fade_in"
+            app:popExitAnim="@android:anim/fade_out"
+            app:popUpToInclusive="false" />
+    </fragment>
+    <fragment
+        android:id="@+id/searchFragment"
+        android:name="ru.shumilova.rick_and_morty.mvp.view.search_screen.SearchFragment"
+        android:label="fragment_characters"
+        tools:layout="@layout/fragment_search" >
+        <action
+            android:id="@+id/action_to_info"
+            app:destination="@id/infoCardFragment" />
+        <argument
+            android:name="searchType"
+            app:argType="ru.shumilova.rick_and_morty.mvp.view.search_screen.SearchType" />
+    </fragment>
+    <fragment
+        android:id="@+id/infoCardFragment"
+        android:name="ru.shumilova.rick_and_morty.mvp.view.character_card.InfoCardFragment"
+        android:label="fragment_character_card"
+        tools:layout="@layout/fragment_info_card" />
+</navigation>
