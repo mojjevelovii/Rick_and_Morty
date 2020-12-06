@@ -26,7 +26,7 @@ data class Location(
 
     @SerializedName("residents")
     @Expose
-    val residents: List<String>? = null,
+    val residents: List<String?>? = null,
 
     @SerializedName("url")
     @Expose

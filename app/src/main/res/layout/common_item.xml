@@ -2,10 +2,11 @@
 <androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    android:layout_width="wrap_content"
+    android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:layout_margin="@dimen/half_margin"
-    app:cardBackgroundColor="@color/indigo">
+    app:cardBackgroundColor="@color/cyan"
+    app:cardCornerRadius="5dp">
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -19,6 +20,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="center"
+            android:gravity="center"
             android:text="@string/episodes"
             tools:text="S01E05" />
 
@@ -30,7 +32,9 @@
             android:layout_gravity="center"
             android:layout_marginTop="@dimen/base_margins"
             android:layout_marginBottom="@dimen/base_margins"
+            android:gravity="center"
             android:text="@string/episodes"
+            android:textColor="@color/indigo"
             android:textStyle="normal"
             tools:text="Meeseeks and Destroy" />
 
