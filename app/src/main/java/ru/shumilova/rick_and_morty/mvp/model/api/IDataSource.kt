@@ -13,15 +13,24 @@ interface IDataSource {
     @GET("character/{id}")
     fun getCharacter(@Path("id") id: Long): Single<Character>
 
+    @GET("character")
+    fun findCharacter(@Query("name") name: String): Single<CharacterResponse>
+
     @GET("location")
     fun getLocations(@Query("page") page: Int): Single<LocationsResponse>
 
     @GET("location/{id}")
     fun getLocation(@Path("id") id: Long): Single<Location>
 
+    @GET("location")
+    fun findLocation(@Query("name") name: String): Single<LocationsResponse>
+
     @GET("episode")
     fun getEpisodes(@Query("page") page: Int): Single<EpisodesResponse>
 
     @GET("episode/{id}")
     fun getEpisode(@Path("id") id: Long): Single<Episode>
+
+    @GET("episode")
+    fun findEpisode(@Query("episode") episode: String): Single<EpisodesResponse>
 }

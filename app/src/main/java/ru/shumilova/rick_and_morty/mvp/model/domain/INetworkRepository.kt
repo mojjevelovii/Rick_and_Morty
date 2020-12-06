@@ -6,10 +6,13 @@ import ru.shumilova.rick_and_morty.mvp.model.entity.domain.CommonItem
 interface INetworkRepository {
     fun getCharacters(page: Int): Single<List<CommonItem>>
     fun getCharacter(id: Long): Single<CommonItem>
+    fun findCharacter(name: String): Single<List<CommonItem>>
 
     fun getLocations(page: Int): Single<List<CommonItem>>
     fun getLocation(id: Long): Single<CommonItem>
+    fun findLocations(name: String): Single<List<CommonItem>>
 
     fun getEpisodes(page: Int): Single<List<CommonItem>>
     fun getEpisode(id: Long): Single<CommonItem>
+    fun findEpisodes(episode: String): Single<List<CommonItem>>
 }
