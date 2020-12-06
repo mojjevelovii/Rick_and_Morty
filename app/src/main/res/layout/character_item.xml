@@ -1,30 +1,41 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
     xmlns:tools="http://schemas.android.com/tools"
-    android:background="@color/indigo">
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_margin="@dimen/half_margin"
+    app:cardBackgroundColor="@color/cyan"
+    app:cardCornerRadius="5dp">
 
-    <androidx.appcompat.widget.AppCompatImageView
-        android:id="@+id/iv_character_item_image"
-        android:layout_width="wrap_content"
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_margin="@dimen/base_margins"
-        app:layout_constraintBottom_toTopOf="@+id/tv_character_name_header"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        android:layout_margin="@dimen/half_margin">
 
-    <TextView
-        android:id="@+id/tv_character_name_header"
-        style="@style/mainHeaderText"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="@dimen/base_margins"
-        tools:text = "Morty Mart Manager Morty"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/iv_character_item_image" />
+        <androidx.appcompat.widget.AppCompatImageView
+            android:id="@+id/iv_character_item_image"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="@dimen/base_margins"
+            app:layout_constraintBottom_toTopOf="@+id/tv_character_name_header"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            tools:src="@drawable/abc_vector_test" />
 
-</androidx.constraintlayout.widget.ConstraintLayout>
+        <TextView
+            android:id="@+id/tv_character_name_header"
+            style="@style/mainHeaderText"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/base_margins"
+            android:gravity="center"
+            android:textColor="@color/indigo"
+            app:layout_constraintEnd_toEndOf="@id/iv_character_item_image"
+            app:layout_constraintStart_toStartOf="@id/iv_character_item_image"
+            app:layout_constraintTop_toBottomOf="@+id/iv_character_item_image"
+            tools:text="Morty Mart Manager Morty" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</androidx.cardview.widget.CardView>

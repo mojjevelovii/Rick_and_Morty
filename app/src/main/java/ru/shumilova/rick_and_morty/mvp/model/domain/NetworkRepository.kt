@@ -6,11 +6,11 @@ import ru.shumilova.rick_and_morty.mvp.model.api.IDataSource
 import ru.shumilova.rick_and_morty.mvp.model.entity.api.Character
 import ru.shumilova.rick_and_morty.mvp.model.entity.api.Episode
 import ru.shumilova.rick_and_morty.mvp.model.entity.api.Location
-import ru.shumilova.rick_and_morty.mvp.model.entity.domain.CommonResponse
+import ru.shumilova.rick_and_morty.mvp.model.entity.domain.CommonItem
 
 class NetworkRepository(private val api: IDataSource) : INetworkRepository {
 
-    override fun getCharacters(page: Int): Single<List<CommonResponse>> {
+    override fun getCharacters(page: Int): Single<List<CommonItem>> {
         return api.getCharacters(page)
             .subscribeOn(Schedulers.io())
             .map {
@@ -22,7 +22,7 @@ class NetworkRepository(private val api: IDataSource) : INetworkRepository {
             }
     }
 
-    override fun getCharacter(id: Long): Single<CommonResponse> {
+    override fun getCharacter(id: Long): Single<CommonItem> {
         return api.getCharacter(id)
             .subscribeOn(Schedulers.io())
             .map {
@@ -30,7 +30,7 @@ class NetworkRepository(private val api: IDataSource) : INetworkRepository {
             }
     }
 
-    override fun getLocations(page: Int): Single<List<CommonResponse>> {
+    override fun getLocations(page: Int): Single<List<CommonItem>> {
         return api.getLocations(page)
             .subscribeOn(Schedulers.io())
             .map {
@@ -42,7 +42,7 @@ class NetworkRepository(private val api: IDataSource) : INetworkRepository {
             }
     }
 
-    override fun getLocation(id: Long): Single<CommonResponse> {
+    override fun getLocation(id: Long): Single<CommonItem> {
         return api.getLocation(id)
             .subscribeOn(Schedulers.io())
             .map {
@@ -50,7 +50,7 @@ class NetworkRepository(private val api: IDataSource) : INetworkRepository {
             }
     }
 
-    override fun getEpisodes(page: Int): Single<List<CommonResponse>> {
+    override fun getEpisodes(page: Int): Single<List<CommonItem>> {
         return api.getEpisodes(page)
             .subscribeOn(Schedulers.io())
             .map {
@@ -62,7 +62,7 @@ class NetworkRepository(private val api: IDataSource) : INetworkRepository {
             }
     }
 
-    override fun getEpisode(id: Long): Single<CommonResponse> {
+    override fun getEpisode(id: Long): Single<CommonItem> {
         return api.getEpisode(id)
             .subscribeOn(Schedulers.io())
             .map {
@@ -71,18 +71,18 @@ class NetworkRepository(private val api: IDataSource) : INetworkRepository {
     }
 
     private fun mapCharacter(item: Character) =
-        CommonResponse.Character(
+        CommonItem.Character(
             id = item.id ?: -1,
             name = item.name ?: "",
             status = item.status ?: "",
             species = item.species ?: "",
             type = item.type ?: "",
             gender = item.gender ?: "",
-            origin = CommonResponse.Character.Origin(
+            origin = CommonItem.Character.Origin(
                 name = item.origin?.name ?: "",
                 url = item.origin?.url ?: ""
             ),
-            location = CommonResponse.Character.Location(
+            location = CommonItem.Character.Location(
                 name = item.location?.name ?: "",
                 url = item.location?.url ?: ""
             ),
@@ -93,7 +93,7 @@ class NetworkRepository(private val api: IDataSource) : INetworkRepository {
         )
 
     private fun mapLocation(item: Location) =
-        CommonResponse.Location(
+        CommonItem.Location(
             id = item.id ?: -1,
             name = item.name ?: "",
             type = item.type ?: "",
@@ -104,7 +104,7 @@ class NetworkRepository(private val api: IDataSource) : INetworkRepository {
         )
 
     private fun mapEpisode(item: Episode) =
-        CommonResponse.Episode(
+        CommonItem.Episode(
             id = item.id ?: -1,
             name = item.name ?: "",
             airDate = item.airDate ?: "",

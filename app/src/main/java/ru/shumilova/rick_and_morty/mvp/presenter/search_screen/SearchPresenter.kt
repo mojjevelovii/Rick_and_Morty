@@ -6,7 +6,7 @@ import io.reactivex.rxjava3.core.Single
 import io.reactivex.rxjava3.schedulers.Schedulers
 import moxy.MvpPresenter
 import ru.shumilova.rick_and_morty.mvp.model.domain.INetworkRepository
-import ru.shumilova.rick_and_morty.mvp.model.entity.domain.CommonResponse
+import ru.shumilova.rick_and_morty.mvp.model.entity.domain.CommonItem
 import ru.shumilova.rick_and_morty.mvp.view.search_screen.ISearchView
 import ru.shumilova.rick_and_morty.mvp.view.search_screen.SearchType
 import javax.inject.Inject
@@ -29,7 +29,7 @@ class SearchPresenter(
     }
 
     private fun getTypedRequest(searchType: SearchType, page: Int)
-            : Single<List<CommonResponse>> {
+            : Single<List<CommonItem>> {
         return when (searchType) {
             SearchType.CHARACTERS -> repository.getCharacters(page)
             SearchType.LOCATIONS -> repository.getLocations(page)

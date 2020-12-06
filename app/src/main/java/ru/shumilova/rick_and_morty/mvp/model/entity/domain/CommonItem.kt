@@ -3,7 +3,7 @@ package ru.shumilova.rick_and_morty.mvp.model.entity.domain
 import android.os.Parcelable
 import kotlinx.android.parcel.Parcelize
 
-sealed class CommonResponse {
+sealed class CommonItem {
     @Parcelize
     data class Character(
         val id: Int,
@@ -18,7 +18,7 @@ sealed class CommonResponse {
         val episode: List<String>,
         val url: String,
         val created: String
-    ) : Parcelable, CommonResponse() {
+    ) : Parcelable, CommonItem() {
 
         @Parcelize
         data class Location(
@@ -42,7 +42,7 @@ sealed class CommonResponse {
         val characters: List<String>,
         val url: String,
         val created: String
-    ) : Parcelable, CommonResponse()
+    ) : Parcelable, CommonItem()
 
     @Parcelize
     data class Location(
@@ -53,5 +53,5 @@ sealed class CommonResponse {
         val residents: List<String>,
         val url: String,
         val created: String
-    ) : Parcelable, CommonResponse()
+    ) : Parcelable, CommonItem()
 }
