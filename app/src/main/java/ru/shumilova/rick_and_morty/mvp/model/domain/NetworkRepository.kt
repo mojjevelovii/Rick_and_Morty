@@ -24,7 +24,7 @@ class NetworkRepository(private val api: IDataSource) : INetworkRepository {
             }
     }
 
-    override fun findCharacter(name: String): Single<List<CommonItem>> {
+    override fun findCharacters(name: String): Single<List<CommonItem>> {
         return api.findCharacter(name)
             .subscribeOn(Schedulers.io())
             .map { mapResponseList(it.results) }
