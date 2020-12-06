@@ -18,14 +18,27 @@ class SearchPresenter(
     @Inject
     lateinit var repository: INetworkRepository
 
-    fun getData(page: Int) {
-        getTypedRequest(searchType, page)
-            .subscribeOn(Schedulers.io())
-            .observeOn(mainThreadScheduler)
-            .subscribe({
-                viewState.onGetResults(it)
-            },
-                { Log.d("Error: ", "${it.message}") })
+    private var currentPage = 0
+    private val pages: MutableList<CommonItem> = ArrayList()
+    private var getDataNotStarted: Boolean = true
+
+    fun getData() {
+        if (getDataNotStarted) {
+            getDataNotStarted = false // флаг для отметки доступности следующего запроса
+            getTypedRequest(searchType, ++currentPage)
+                .subscribeOn(Schedulers.io())
+                .observeOn(mainThreadScheduler)
+                .subscribe({
+                    pages.addAll(it)
+                    viewState.onGetResults(pages)
+                    getDataNotStarted = true
+                },
+                    {
+                        Log.d("Error: ", "${it.message}")
+                        getDataNotStarted = true
+                    })
+        }
+
     }
 
     private fun getTypedRequest(searchType: SearchType, page: Int)

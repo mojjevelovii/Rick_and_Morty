@@ -4,10 +4,8 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.Toast
 import androidx.navigation.fragment.navArgs
 import androidx.recyclerview.widget.GridLayoutManager
-import androidx.recyclerview.widget.LinearLayoutManager
 import io.reactivex.rxjava3.android.schedulers.AndroidSchedulers
 import kotlinx.android.synthetic.main.fragment_search.*
 import moxy.MvpAppCompatFragment
@@ -43,7 +41,7 @@ class SearchFragment : MvpAppCompatFragment(), ISearchView {
         }
 
         initRecyclerView()
-        presenter.getData(1)
+        presenter.getData()
     }
 
     private fun setTitle(header: Int) {
@@ -55,9 +53,16 @@ class SearchFragment : MvpAppCompatFragment(), ISearchView {
         rv_characters.layoutManager = GridLayoutManager(requireContext(), 2)
         rv_characters.adapter = adapter
 
+        // вычисление момента запуска зарузки следующей страницы
+        rv_characters.setOnScrollChangeListener { _, _, _, _, _ ->
+            val lastVisiblePosition = (rv_characters.layoutManager as GridLayoutManager)
+                .findLastVisibleItemPosition()
+            if (lastVisiblePosition >= (adapter?.data?.size ?: 0) - 10)
+                presenter.getData()
+        }
     }
 
-    // сетим данные в rv
+    // сэтим данные в rv
     override fun onGetResults(results: List<CommonItem>) {
         adapter?.data = results
     }

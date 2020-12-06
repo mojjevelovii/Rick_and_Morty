@@ -104,6 +104,4 @@ class ItemRVAdapter(private val listener: (CommonItem) -> Unit) :
             containerView.setOnClickListener { listener.invoke(commonItem) }
         }
     }
-
-
 }
