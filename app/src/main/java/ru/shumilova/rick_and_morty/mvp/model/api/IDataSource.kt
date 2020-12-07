@@ -13,6 +13,9 @@ interface IDataSource {
     @GET("character/{id}")
     fun getCharacter(@Path("id") id: Long): Single<Character>
 
+    @GET("character/{id}")
+    fun getCharacters(@Path("id") id: String): Single<List<Character>>
+
     @GET("character")
     fun findCharacter(@Query("name") name: String): Single<CharacterResponse>
 
@@ -27,6 +30,9 @@ interface IDataSource {
 
     @GET("episode")
     fun getEpisodes(@Query("page") page: Int): Single<EpisodesResponse>
+
+    @GET("episode/{id}")
+    fun getEpisodes(@Path("id") id: String): Single<List<Episode>>
 
     @GET("episode/{id}")
     fun getEpisode(@Path("id") id: Long): Single<Episode>

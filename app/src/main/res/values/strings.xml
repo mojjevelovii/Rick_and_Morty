@@ -5,11 +5,15 @@
     <string name="locations">locations</string>
     <string name="episodes">episodes</string>
     <string name="search_prompt_text">Start typing search text…</string>
-    <string name="character_status_head">Status: </string>
-    <string name="character_species_head">Species: </string>
-    <string name="character_gender_head">Gender: </string>
-    <string name="character_origin_head">First seen in:</string>
+    <string name="character_status_head">Status:</string>
+    <string name="character_species_head">Species:</string>
+    <string name="character_gender_head">Gender:</string>
+    <string name="character_origin_head">Origin:</string>
     <string name="character_episodes_header">Episodes</string>
     <string name="character_location_head">Last known location:</string>
+    <string name="type">Type:</string>
+    <string name="dimension">Dimension:</string>
+    <string name="date_aired">Date aired:</string>
+    <string name="episode">Episode:</string>
 
 </resources>

@@ -16,6 +16,12 @@ class NetworkRepository(private val api: IDataSource) : INetworkRepository {
             .map { mapResponseList(it.results) }
     }
 
+    override fun getCharacters(ids: String): Single<List<CommonItem>> {
+        return api.getCharacters(ids)
+            .subscribeOn(Schedulers.io())
+            .map { it.map { mapCharacter(it) } }
+    }
+
     override fun getCharacter(id: Long): Single<CommonItem> {
         return api.getCharacter(id)
             .subscribeOn(Schedulers.io())
@@ -55,12 +61,16 @@ class NetworkRepository(private val api: IDataSource) : INetworkRepository {
             .map { mapResponseList(it.results) }
     }
 
+    override fun getEpisodes(ids: String): Single<List<CommonItem>> {
+        return api.getEpisodes(ids)
+            .subscribeOn(Schedulers.io())
+            .map { it.map { mapEpisode(it) } }
+    }
+
     override fun getEpisode(id: Long): Single<CommonItem> {
         return api.getEpisode(id)
             .subscribeOn(Schedulers.io())
-            .map {
-                mapEpisode(it)
-            }
+            .map { mapEpisode(it) }
     }
 
     override fun findEpisodes(episode: String): Single<List<CommonItem>> {

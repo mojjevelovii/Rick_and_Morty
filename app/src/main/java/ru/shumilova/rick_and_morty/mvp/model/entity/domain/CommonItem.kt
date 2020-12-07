@@ -2,8 +2,9 @@ package ru.shumilova.rick_and_morty.mvp.model.entity.domain
 
 import android.os.Parcelable
 import kotlinx.android.parcel.Parcelize
+import java.io.Serializable
 
-sealed class CommonItem {
+sealed class CommonItem:Serializable {
     @Parcelize
     data class Character(
         val id: Int,

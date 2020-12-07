@@ -34,7 +34,7 @@ class SearchPresenter(
                     getDataNotStarted = true
                 },
                     {
-                        Log.d("Error: ", "${it.message}")
+                        it.printStackTrace()
                         getDataNotStarted = true
                     })
             compositeDisposable.add(disposable)

@@ -26,14 +26,29 @@
         tools:layout="@layout/fragment_search" >
         <action
             android:id="@+id/action_to_info"
-            app:destination="@id/infoCardFragment" />
+            app:destination="@id/infoCardFragment"
+            app:enterAnim="@android:anim/fade_in"
+            app:exitAnim="@android:anim/fade_out"
+            app:popEnterAnim="@android:anim/fade_in"
+            app:popExitAnim="@android:anim/fade_out" />
         <argument
             android:name="searchType"
             app:argType="ru.shumilova.rick_and_morty.mvp.view.search_screen.SearchType" />
     </fragment>
     <fragment
         android:id="@+id/infoCardFragment"
-        android:name="ru.shumilova.rick_and_morty.mvp.view.character_card.InfoCardFragment"
+        android:name="ru.shumilova.rick_and_morty.mvp.view.info_card.InfoCardFragment"
         android:label="fragment_character_card"
-        tools:layout="@layout/fragment_info_card" />
+        tools:layout="@layout/fragment_info_card" >
+        <argument
+            android:name="item"
+            app:argType="ru.shumilova.rick_and_morty.mvp.model.entity.domain.CommonItem" />
+        <action
+            android:id="@+id/infoCard_self"
+            app:destination="@id/infoCardFragment"
+            app:enterAnim="@android:anim/fade_in"
+            app:exitAnim="@android:anim/fade_out"
+            app:popEnterAnim="@android:anim/fade_in"
+            app:popExitAnim="@android:anim/fade_out" />
+    </fragment>
 </navigation>

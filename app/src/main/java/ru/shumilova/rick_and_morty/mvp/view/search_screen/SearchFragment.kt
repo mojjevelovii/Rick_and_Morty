@@ -6,6 +6,7 @@ import android.text.TextWatcher
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.navigation.fragment.findNavController
 import androidx.navigation.fragment.navArgs
 import androidx.recyclerview.widget.GridLayoutManager
 import io.reactivex.rxjava3.android.schedulers.AndroidSchedulers
@@ -81,7 +82,10 @@ class SearchFragment : MvpAppCompatFragment(), ISearchView {
     }
 
     private fun initRecyclerView() {
-        adapter = ItemRVAdapter { item -> }
+        adapter = ItemRVAdapter { item ->
+            val action = SearchFragmentDirections.actionToInfo(item)
+            findNavController().navigate(action)
+        }
         rv_characters.layoutManager = GridLayoutManager(requireContext(), 2)
         rv_characters.adapter = adapter
 
