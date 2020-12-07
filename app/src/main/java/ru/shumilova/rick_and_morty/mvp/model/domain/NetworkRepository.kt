@@ -13,13 +13,13 @@ class NetworkRepository(private val api: IDataSource) : INetworkRepository {
     override fun getCharacters(page: Int): Single<List<CommonItem>> {
         return api.getCharacters(page)
             .subscribeOn(Schedulers.io())
-            .map {
-                it.results?.mapNotNull { item ->
-                    item?.let {
-                        mapCharacter(it)
-                    }
-                } ?: emptyList()
-            }
+            .map { mapResponseList(it.results) }
+    }
+
+    override fun getCharacters(ids: String): Single<List<CommonItem>> {
+        return api.getCharacters(ids)
+            .subscribeOn(Schedulers.io())
+            .map { it.map { mapCharacter(it) } }
     }
 
     override fun getCharacter(id: Long): Single<CommonItem> {
@@ -30,16 +30,16 @@ class NetworkRepository(private val api: IDataSource) : INetworkRepository {
             }
     }
 
+    override fun findCharacters(name: String): Single<List<CommonItem>> {
+        return api.findCharacter(name)
+            .subscribeOn(Schedulers.io())
+            .map { mapResponseList(it.results) }
+    }
+
     override fun getLocations(page: Int): Single<List<CommonItem>> {
         return api.getLocations(page)
             .subscribeOn(Schedulers.io())
-            .map {
-                it.results?.mapNotNull { item ->
-                    item?.let {
-                        mapLocation(it)
-                    }
-                } ?: emptyList()
-            }
+            .map { mapResponseList(it.results) }
     }
 
     override fun getLocation(id: Long): Single<CommonItem> {
@@ -50,24 +50,47 @@ class NetworkRepository(private val api: IDataSource) : INetworkRepository {
             }
     }
 
+    override fun findLocations(name: String): Single<List<CommonItem>> {
+        return api.findLocation(name)
+            .map { mapResponseList(it.results) }
+    }
+
     override fun getEpisodes(page: Int): Single<List<CommonItem>> {
         return api.getEpisodes(page)
             .subscribeOn(Schedulers.io())
-            .map {
-                it.results?.mapNotNull { item ->
-                    item?.let {
-                        mapEpisode(it)
-                    }
-                } ?: emptyList()
-            }
+            .map { mapResponseList(it.results) }
+    }
+
+    override fun getEpisodes(ids: String): Single<List<CommonItem>> {
+        return api.getEpisodes(ids)
+            .subscribeOn(Schedulers.io())
+            .map { it.map { mapEpisode(it) } }
     }
 
     override fun getEpisode(id: Long): Single<CommonItem> {
         return api.getEpisode(id)
             .subscribeOn(Schedulers.io())
-            .map {
-                mapEpisode(it)
+            .map { mapEpisode(it) }
+    }
+
+    override fun findEpisodes(episode: String): Single<List<CommonItem>> {
+        return api.findEpisode(episode)
+            .subscribeOn(Schedulers.io())
+            .map { mapResponseList(it.results) }
+    }
+
+    private fun <T> mapResponseList(list: List<T?>?): List<CommonItem> {
+        return list?.mapNotNull { item ->
+            item?.let {
+                when (it) {
+                    is Character -> mapCharacter(it)
+                    is Episode -> mapEpisode(it)
+                    is Location -> mapLocation(it)
+
+                    else -> null
+                }
             }
+        } ?: emptyList()
     }
 
     private fun mapCharacter(item: Character) =

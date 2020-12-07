@@ -1,201 +1,225 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
+    android:layout_height="wrap_content"
     android:background="@color/indigo">
 
-    <TextView
-        android:id="@+id/tv_characters_name_header"
-        style="@style/mainHeaderText"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_gravity="center"
-        android:layout_margin="@dimen/base_margins"
-        app:layout_constraintBottom_toTopOf="@+id/ll_character_image_container"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        tools:text="Morty Mart Manager Morty" />
-
-    <FrameLayout
-        android:id="@+id/ll_character_image_container"
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/cl_container"
         android:layout_width="match_parent"
-        android:layout_height="300dp"
-        android:layout_margin="@dimen/base_margins"
-        android:background="@color/pastel_indigo"
-        app:layout_constraintBottom_toTopOf="@+id/ll_character_status_container"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent">
-
-        <androidx.appcompat.widget.AppCompatImageView
-            android:id="@+id/iv_character_image"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_gravity="center" />
-    </FrameLayout>
-
-    <LinearLayout
-        android:id="@+id/ll_character_status_container"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="@dimen/base_margins"
-        android:layout_marginTop="@dimen/base_margins"
-        android:layout_marginEnd="@dimen/base_margins"
-        android:background="@color/pastel_indigo"
-        android:orientation="horizontal"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/ll_character_image_container">
+        android:layout_height="wrap_content">
 
         <TextView
-            android:id="@+id/tv_status_head"
-            style="@style/mainCharacterCardText"
+            android:id="@+id/tv_character_name_header"
+            style="@style/mainHeaderText"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="@string/character_status_head" />
+            android:layout_gravity="center"
+            android:layout_marginTop="@dimen/base_margins"
+            app:layout_constraintBottom_toTopOf="@+id/ll_character_image_container"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            tools:text="Morty Mart Manager Morty" />
+
+        <FrameLayout
+            android:id="@+id/ll_character_image_container"
+            android:layout_width="300dp"
+            android:layout_height="300dp"
+            android:layout_margin="@dimen/base_margins"
+            android:background="@drawable/rounded_background"
+            app:layout_constraintBottom_toTopOf="@+id/ll_character_status_container"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/tv_character_name_header">
+
+            <androidx.appcompat.widget.AppCompatImageView
+                android:id="@+id/iv_character_image"
+                android:layout_width="250dp"
+                android:layout_height="250dp"
+                android:layout_gravity="center" />
+        </FrameLayout>
+
+        <LinearLayout
+            android:id="@+id/ll_character_status_container"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/base_margins"
+            android:layout_marginTop="@dimen/base_margins"
+            android:layout_marginEnd="@dimen/base_margins"
+            android:background="@drawable/rounded_background"
+            android:orientation="horizontal"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/ll_character_image_container">
+
+            <TextView
+                android:id="@+id/tv_status_head"
+                style="@style/mainCharacterCardText"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_margin="@dimen/half_margin"
+                android:text="@string/character_status_head" />
+
+            <TextView
+                android:id="@+id/tv_character_status"
+                style="@style/mainCharacterCardText"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginEnd="@dimen/half_margin"
+                android:layout_marginTop="@dimen/half_margin"
+                android:layout_marginBottom="@dimen/half_margin"
+                android:textStyle="normal" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/ll_character_species_container"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/base_margins"
+            android:layout_marginTop="@dimen/base_margins"
+            android:layout_marginEnd="@dimen/base_margins"
+            android:background="@drawable/rounded_background"
+            android:orientation="horizontal"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/ll_character_status_container">
+
+            <TextView
+                android:id="@+id/tv_species"
+                style="@style/mainCharacterCardText"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_margin="@dimen/half_margin"
+                android:text="@string/character_species_head" />
+
+            <TextView
+                android:id="@+id/tv_character_species"
+                style="@style/mainCharacterCardText"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginEnd="@dimen/half_margin"
+                android:layout_marginBottom="@dimen/half_margin"
+                android:layout_marginTop="@dimen/half_margin"
+                android:textStyle="normal" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/ll_character_gender_container"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/base_margins"
+            android:layout_marginTop="@dimen/base_margins"
+            android:layout_marginEnd="@dimen/base_margins"
+            android:background="@drawable/rounded_background"
+            android:orientation="horizontal"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/ll_character_species_container">
+
+            <TextView
+                android:id="@+id/tv_gender"
+                style="@style/mainCharacterCardText"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_margin="@dimen/half_margin"
+                android:text="@string/character_gender_head" />
+
+            <TextView
+                android:id="@+id/tv_character_gender"
+                style="@style/mainCharacterCardText"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginEnd="@dimen/half_margin"
+                android:layout_marginTop="@dimen/half_margin"
+                android:layout_marginBottom="@dimen/half_margin"
+                android:textStyle="normal" />
+        </LinearLayout>
+
 
         <TextView
-            android:id="@+id/tv_character_status"
-            style="@style/mainCharacterCardText"
-            android:layout_width="wrap_content"
+            android:id="@+id/tv_episodes"
+            style="@style/mainHeaderText"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:textStyle="normal" />
-    </LinearLayout>
+            android:layout_marginStart="@dimen/base_margins"
+            android:layout_marginTop="@dimen/base_margins"
+            android:layout_marginEnd="@dimen/base_margins"
+            android:text="@string/character_episodes_header"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/ll_character_gender_container" />
 
-    <LinearLayout
-        android:id="@+id/ll_character_species_container"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="@dimen/base_margins"
-        android:layout_marginTop="@dimen/base_margins"
-        android:layout_marginEnd="@dimen/base_margins"
-        android:background="@color/pastel_indigo"
-        android:orientation="horizontal"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/ll_character_status_container">
 
-        <TextView
-            android:id="@+id/tv_species"
-            style="@style/mainCharacterCardText"
-            android:layout_width="wrap_content"
+        <LinearLayout
+            android:id="@+id/ll_character_origin_container"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="@string/character_species_head" />
+            android:layout_marginStart="@dimen/base_margins"
+            android:layout_marginTop="@dimen/base_margins"
+            android:layout_marginEnd="@dimen/base_margins"
+            android:background="@drawable/rounded_background"
+            android:orientation="horizontal"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/tv_episodes">
 
-        <TextView
-            android:id="@+id/tv_character_species"
-            style="@style/mainCharacterCardText"
-            android:layout_width="wrap_content"
+            <TextView
+                android:id="@+id/tv_origin"
+                style="@style/mainCharacterCardText"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_margin="@dimen/half_margin"
+                android:text="@string/character_origin_head" />
+
+            <TextView
+                android:id="@+id/tv_character_origin"
+                style="@style/mainCharacterCardText"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginEnd="@dimen/half_margin"
+                android:layout_marginTop="@dimen/half_margin"
+                android:layout_marginBottom="@dimen/half_margin"
+                android:textStyle="normal" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/ll_character_location_container"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:textStyle="normal" />
-    </LinearLayout>
+            android:layout_marginStart="@dimen/base_margins"
+            android:layout_marginTop="@dimen/base_margins"
+            android:layout_marginEnd="@dimen/base_margins"
+            android:background="@drawable/rounded_background"
+            android:orientation="horizontal"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/ll_character_origin_container">
 
-    <LinearLayout
-        android:id="@+id/ll_character_gender_container"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="@dimen/base_margins"
-        android:layout_marginTop="@dimen/base_margins"
-        android:layout_marginEnd="@dimen/base_margins"
-        android:background="@color/pastel_indigo"
-        android:orientation="horizontal"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/ll_character_species_container">
+            <TextView
+                android:id="@+id/tv_location"
+                style="@style/mainCharacterCardText"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+              android:layout_margin="@dimen/half_margin"
+                android:text="@string/character_location_head" />
 
-        <TextView
-            android:id="@+id/tv_gender"
-            style="@style/mainCharacterCardText"
-            android:layout_width="wrap_content"
+            <TextView
+                android:id="@+id/tv_character_location"
+                style="@style/mainCharacterCardText"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginEnd="@dimen/half_margin"
+                android:layout_marginTop="@dimen/half_margin"
+                android:layout_marginBottom="@dimen/half_margin"
+                android:textStyle="normal" />
+        </LinearLayout>
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/rv_episodes_container"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:background="@color/pastel_indigo"
-            android:text="@string/character_gender_head" />
-
-        <TextView
-            android:id="@+id/tv_character_gender"
-            style="@style/mainCharacterCardText"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:textStyle="normal" />
-    </LinearLayout>
-
-
-    <TextView
-        android:id="@+id/tv_episodes"
-        style="@style/mainHeaderText"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="@dimen/base_margins"
-        android:layout_marginTop="@dimen/base_margins"
-        android:layout_marginEnd="@dimen/base_margins"
-        android:text="@string/character_episodes_header"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/ll_character_gender_container" />
-
-
-    <LinearLayout
-        android:id="@+id/ll_character_origin_container"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="@dimen/base_margins"
-        android:layout_marginTop="@dimen/base_margins"
-        android:layout_marginEnd="@dimen/base_margins"
-        android:background="@color/pastel_indigo"
-        android:orientation="horizontal"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/tv_episodes">
-
-        <TextView
-            android:id="@+id/tv_origin"
-            style="@style/mainCharacterCardText"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="@string/character_origin_head" />
-
-        <TextView
-            android:id="@+id/tv_character_origin"
-            style="@style/mainCharacterCardText"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:textStyle="normal" />
-    </LinearLayout>
-
-    <LinearLayout
-        android:id="@+id/ll_character_location_container"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="@dimen/base_margins"
-        android:layout_marginTop="@dimen/base_margins"
-        android:layout_marginEnd="@dimen/base_margins"
-        android:background="@color/pastel_indigo"
-        android:orientation="horizontal"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/ll_character_origin_container">
-
-        <TextView
-            android:id="@+id/tv_location"
-            style="@style/mainCharacterCardText"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="@string/character_location_head" />
-
-        <TextView
-            android:id="@+id/tv_character_location"
-            style="@style/mainCharacterCardText"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:textStyle="normal" />
-    </LinearLayout>
-
-    <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/rv_episodes_container"
-        android:layout_width="match_parent"
-        android:layout_height="0dp"
-        android:layout_margin="@dimen/base_margins"
-        android:background="@color/pastel_indigo"
-        android:clipToPadding="false"
-        android:paddingTop="16dp"
-        android:paddingBottom="16dp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/ll_character_location_container" />
-</androidx.constraintlayout.widget.ConstraintLayout>
+            android:clipToPadding="false"
+            android:paddingTop="16dp"
+            android:paddingBottom="16dp"
+            android:paddingHorizontal="@dimen/half_margin"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/ll_character_location_container" />
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</ScrollView>

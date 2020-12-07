@@ -1,9 +1,12 @@
 package ru.shumilova.rick_and_morty.mvp.view.search_screen
 
 import android.os.Bundle
+import android.text.Editable
+import android.text.TextWatcher
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.navigation.fragment.findNavController
 import androidx.navigation.fragment.navArgs
 import androidx.recyclerview.widget.GridLayoutManager
 import io.reactivex.rxjava3.android.schedulers.AndroidSchedulers
@@ -42,6 +45,36 @@ class SearchFragment : MvpAppCompatFragment(), ISearchView {
 
         initRecyclerView()
         presenter.getData()
+
+        iv_search.setOnClickListener {
+            et_search.text?.clear()
+        }
+
+        // запросы на поиск по введенному тексту по мере его ввода
+        et_search.addTextChangedListener(object : TextWatcher {
+            override fun beforeTextChanged(p0: CharSequence?, p1: Int, p2: Int, p3: Int) {}
+            override fun afterTextChanged(p0: Editable?) {}
+
+            override fun onTextChanged(p0: CharSequence?, p1: Int, p2: Int, p3: Int) {
+                p0?.let {
+                    setSearchIcon(it)
+                    if (it.length >= 2)
+                        presenter.findBy(it.toString())
+                    else if (it.isEmpty())
+                        presenter.clearSearch()
+                } ?: presenter.clearSearch()
+            }
+        })
+    }
+
+    private fun setSearchIcon(text: CharSequence?) {
+        if (text.isNullOrEmpty()) {
+            iv_search.setImageResource(R.drawable.ic_search_24)
+            iv_search.isClickable = false
+        } else {
+            iv_search.setImageResource(R.drawable.ic_clear_24)
+            iv_search.isClickable = true
+        }
     }
 
     private fun setTitle(header: Int) {
@@ -49,7 +82,10 @@ class SearchFragment : MvpAppCompatFragment(), ISearchView {
     }
 
     private fun initRecyclerView() {
-        adapter = ItemRVAdapter { item -> }
+        adapter = ItemRVAdapter { item ->
+            val action = SearchFragmentDirections.actionToInfo(item)
+            findNavController().navigate(action)
+        }
         rv_characters.layoutManager = GridLayoutManager(requireContext(), 2)
         rv_characters.adapter = adapter
 
@@ -57,10 +93,14 @@ class SearchFragment : MvpAppCompatFragment(), ISearchView {
         rv_characters.setOnScrollChangeListener { _, _, _, _, _ ->
             val lastVisiblePosition = (rv_characters.layoutManager as GridLayoutManager)
                 .findLastVisibleItemPosition()
-            if (lastVisiblePosition >= (adapter?.data?.size ?: 0) - 10)
+            if (isNeedNextPage(lastVisiblePosition))
                 presenter.getData()
         }
     }
+
+    private fun isNeedNextPage(lastVisiblePosition: Int) = et_search.text.isNullOrEmpty() &&
+            lastVisiblePosition >=
+            (adapter?.data?.size ?: 0) - 10
 
     // сэтим данные в rv
     override fun onGetResults(results: List<CommonItem>) {

@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:layout_margin="@dimen/half_margin"
-    app:cardBackgroundColor="@color/cyan"
+    app:cardBackgroundColor="@color/deep_beet"
     app:cardCornerRadius="5dp">
 
     <LinearLayout
@@ -34,7 +34,6 @@
             android:layout_marginBottom="@dimen/base_margins"
             android:gravity="center"
             android:text="@string/episodes"
-            android:textColor="@color/indigo"
             android:textStyle="normal"
             tools:text="Meeseeks and Destroy" />
 
