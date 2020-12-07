@@ -59,8 +59,7 @@
                 style="@style/mainCharacterCardText"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginStart="@dimen/half_margin"
-                android:layout_marginEnd="@dimen/half_margin"
+                android:layout_margin="@dimen/half_margin"
                 android:text="@string/character_status_head" />
 
             <TextView
@@ -69,6 +68,8 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginEnd="@dimen/half_margin"
+                android:layout_marginTop="@dimen/half_margin"
+                android:layout_marginBottom="@dimen/half_margin"
                 android:textStyle="normal" />
         </LinearLayout>
 
@@ -89,8 +90,7 @@
                 style="@style/mainCharacterCardText"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginStart="@dimen/half_margin"
-                android:layout_marginEnd="@dimen/half_margin"
+                android:layout_margin="@dimen/half_margin"
                 android:text="@string/character_species_head" />
 
             <TextView
@@ -99,6 +99,8 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginEnd="@dimen/half_margin"
+                android:layout_marginBottom="@dimen/half_margin"
+                android:layout_marginTop="@dimen/half_margin"
                 android:textStyle="normal" />
         </LinearLayout>
 
@@ -119,8 +121,7 @@
                 style="@style/mainCharacterCardText"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginStart="@dimen/half_margin"
-                android:layout_marginEnd="@dimen/half_margin"
+                android:layout_margin="@dimen/half_margin"
                 android:text="@string/character_gender_head" />
 
             <TextView
@@ -129,6 +130,8 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginEnd="@dimen/half_margin"
+                android:layout_marginTop="@dimen/half_margin"
+                android:layout_marginBottom="@dimen/half_margin"
                 android:textStyle="normal" />
         </LinearLayout>
 
@@ -163,8 +166,7 @@
                 style="@style/mainCharacterCardText"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginStart="@dimen/half_margin"
-                android:layout_marginEnd="@dimen/half_margin"
+                android:layout_margin="@dimen/half_margin"
                 android:text="@string/character_origin_head" />
 
             <TextView
@@ -173,6 +175,8 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginEnd="@dimen/half_margin"
+                android:layout_marginTop="@dimen/half_margin"
+                android:layout_marginBottom="@dimen/half_margin"
                 android:textStyle="normal" />
         </LinearLayout>
 
@@ -193,8 +197,7 @@
                 style="@style/mainCharacterCardText"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginStart="@dimen/half_margin"
-                android:layout_marginEnd="@dimen/half_margin"
+              android:layout_margin="@dimen/half_margin"
                 android:text="@string/character_location_head" />
 
             <TextView
@@ -203,6 +206,8 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginEnd="@dimen/half_margin"
+                android:layout_marginTop="@dimen/half_margin"
+                android:layout_marginBottom="@dimen/half_margin"
                 android:textStyle="normal" />
         </LinearLayout>
 

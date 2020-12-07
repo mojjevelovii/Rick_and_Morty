@@ -11,7 +11,7 @@
     </style>
 
     <style name="mainCharacterCardText" parent="Widget.AppCompat.TextView">
-        <item name="android:textColor">@color/indigo</item>
+        <item name="android:textColor">@color/pastel_cyan</item>
         <item name="fontFamily">sans-serif-medium</item>
         <item name="android:textAlignment">center</item>
         <item name="android:textStyle">bold</item>
@@ -19,7 +19,7 @@
     </style>
 
     <style name="mainButton" parent="mainHeaderText">
-        <item name="android:backgroundTint">@color/cyan</item>
+        <item name="android:backgroundTint">@color/lime</item>
         <item name="android:textColor">@color/indigo</item>
         <item name="android:textAlignment">center</item>
         <item name="android:layout_marginTop">@dimen/half_margin</item>
