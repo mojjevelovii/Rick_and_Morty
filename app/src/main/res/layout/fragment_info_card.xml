@@ -42,6 +42,25 @@
                 android:layout_gravity="center" />
         </FrameLayout>
 
+        <View
+            android:layout_width="50dp"
+            android:layout_height="50dp"
+            android:background="@drawable/round_bg"
+            app:layout_constraintBottom_toBottomOf="@+id/iv_favorite"
+            app:layout_constraintEnd_toEndOf="@+id/iv_favorite"
+            app:layout_constraintStart_toStartOf="@+id/iv_favorite"
+            app:layout_constraintTop_toTopOf="@id/iv_favorite" />
+
+        <androidx.appcompat.widget.AppCompatImageView
+            android:id="@+id/iv_favorite"
+            android:layout_width="44dp"
+            android:layout_height="44dp"
+            android:layout_marginTop="@dimen/half_margin"
+            android:layout_marginEnd="@dimen/base_margins"
+            app:layout_constraintEnd_toEndOf="@+id/ll_character_image_container"
+            app:layout_constraintTop_toTopOf="@id/ll_character_image_container"
+            app:srcCompat="@drawable/ic_empty_star_24" />
+
         <LinearLayout
             android:id="@+id/ll_character_status_container"
             android:layout_width="match_parent"
@@ -67,8 +86,8 @@
                 style="@style/mainCharacterCardText"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginEnd="@dimen/half_margin"
                 android:layout_marginTop="@dimen/half_margin"
+                android:layout_marginEnd="@dimen/half_margin"
                 android:layout_marginBottom="@dimen/half_margin"
                 android:textStyle="normal" />
         </LinearLayout>
@@ -98,9 +117,9 @@
                 style="@style/mainCharacterCardText"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/half_margin"
                 android:layout_marginEnd="@dimen/half_margin"
                 android:layout_marginBottom="@dimen/half_margin"
-                android:layout_marginTop="@dimen/half_margin"
                 android:textStyle="normal" />
         </LinearLayout>
 
@@ -129,8 +148,8 @@
                 style="@style/mainCharacterCardText"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginEnd="@dimen/half_margin"
                 android:layout_marginTop="@dimen/half_margin"
+                android:layout_marginEnd="@dimen/half_margin"
                 android:layout_marginBottom="@dimen/half_margin"
                 android:textStyle="normal" />
         </LinearLayout>
@@ -174,8 +193,8 @@
                 style="@style/mainCharacterCardText"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginEnd="@dimen/half_margin"
                 android:layout_marginTop="@dimen/half_margin"
+                android:layout_marginEnd="@dimen/half_margin"
                 android:layout_marginBottom="@dimen/half_margin"
                 android:textStyle="normal" />
         </LinearLayout>
@@ -197,7 +216,7 @@
                 style="@style/mainCharacterCardText"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-              android:layout_margin="@dimen/half_margin"
+                android:layout_margin="@dimen/half_margin"
                 android:text="@string/character_location_head" />
 
             <TextView
@@ -205,8 +224,8 @@
                 style="@style/mainCharacterCardText"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginEnd="@dimen/half_margin"
                 android:layout_marginTop="@dimen/half_margin"
+                android:layout_marginEnd="@dimen/half_margin"
                 android:layout_marginBottom="@dimen/half_margin"
                 android:textStyle="normal" />
         </LinearLayout>
@@ -216,9 +235,9 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:clipToPadding="false"
+            android:paddingHorizontal="@dimen/half_margin"
             android:paddingTop="16dp"
             android:paddingBottom="16dp"
-            android:paddingHorizontal="@dimen/half_margin"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintTop_toBottomOf="@id/ll_character_location_container" />
     </androidx.constraintlayout.widget.ConstraintLayout>

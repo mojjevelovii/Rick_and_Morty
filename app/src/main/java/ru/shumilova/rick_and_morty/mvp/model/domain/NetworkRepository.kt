@@ -1,39 +1,63 @@
 package ru.shumilova.rick_and_morty.mvp.model.domain
 
 import io.reactivex.rxjava3.core.Single
+import io.reactivex.rxjava3.functions.BiFunction
 import io.reactivex.rxjava3.schedulers.Schedulers
 import ru.shumilova.rick_and_morty.mvp.model.api.IDataSource
+import ru.shumilova.rick_and_morty.mvp.model.data_base.DataBase
+import ru.shumilova.rick_and_morty.mvp.model.data_base.entity.CharacterEntity
 import ru.shumilova.rick_and_morty.mvp.model.entity.api.Character
+import ru.shumilova.rick_and_morty.mvp.model.entity.api.CharacterResponse
 import ru.shumilova.rick_and_morty.mvp.model.entity.api.Episode
 import ru.shumilova.rick_and_morty.mvp.model.entity.api.Location
 import ru.shumilova.rick_and_morty.mvp.model.entity.domain.CommonItem
 
-class NetworkRepository(private val api: IDataSource) : INetworkRepository {
+class NetworkRepository(
+    private val api: IDataSource,
+    private val favoriteDB: DataBase
+) : INetworkRepository {
 
     override fun getCharacters(page: Int): Single<List<CommonItem>> {
         return api.getCharacters(page)
             .subscribeOn(Schedulers.io())
-            .map { mapResponseList(it.results) }
+            .zipWith(
+                favoriteDB.characterDao.getAll().subscribeOn(Schedulers.io()),
+                BiFunction<CharacterResponse, List<CharacterEntity>, List<CommonItem>> { netCharacters, favorites ->
+                    mapResponseList(netCharacters.results, favorites)
+                }
+            )
     }
 
     override fun getCharacters(ids: String): Single<List<CommonItem>> {
         return api.getCharacters(ids)
             .subscribeOn(Schedulers.io())
-            .map { it.map { mapCharacter(it) } }
+            .zipWith(
+                favoriteDB.characterDao.getAll().subscribeOn(Schedulers.io()),
+                BiFunction<List<Character>, List<CharacterEntity>, List<CommonItem>> { netCharacters, favorites ->
+                    netCharacters.map { mapCharacter(it, favorites) }
+                }
+            )
     }
 
     override fun getCharacter(id: Long): Single<CommonItem> {
         return api.getCharacter(id)
             .subscribeOn(Schedulers.io())
-            .map {
-                mapCharacter(it)
-            }
+            .zipWith(
+                favoriteDB.characterDao.getAll().subscribeOn(Schedulers.io()),
+                BiFunction<Character, List<CharacterEntity>, CommonItem> { netCharacter, favorites ->
+                    mapCharacter(netCharacter, favorites)
+                })
     }
 
     override fun findCharacters(name: String): Single<List<CommonItem>> {
         return api.findCharacter(name)
             .subscribeOn(Schedulers.io())
-            .map { mapResponseList(it.results) }
+            .zipWith(
+                favoriteDB.characterDao.getAll().subscribeOn(Schedulers.io()),
+                BiFunction<CharacterResponse, List<CharacterEntity>, List<CommonItem>> { netCharacters, favorites ->
+                    mapResponseList(netCharacters.results, favorites)
+                }
+            )
     }
 
     override fun getLocations(page: Int): Single<List<CommonItem>> {
@@ -79,11 +103,11 @@ class NetworkRepository(private val api: IDataSource) : INetworkRepository {
             .map { mapResponseList(it.results) }
     }
 
-    private fun <T> mapResponseList(list: List<T?>?): List<CommonItem> {
+    private fun <T> mapResponseList(list: List<T?>?, favorites: List<CharacterEntity> = emptyList()): List<CommonItem> {
         return list?.mapNotNull { item ->
             item?.let {
                 when (it) {
-                    is Character -> mapCharacter(it)
+                    is Character -> mapCharacter(it, favorites)
                     is Episode -> mapEpisode(it)
                     is Location -> mapLocation(it)
 
@@ -93,7 +117,7 @@ class NetworkRepository(private val api: IDataSource) : INetworkRepository {
         } ?: emptyList()
     }
 
-    private fun mapCharacter(item: Character) =
+    private fun mapCharacter(item: Character, favorites: List<CharacterEntity>) =
         CommonItem.Character(
             id = item.id ?: -1,
             name = item.name ?: "",
@@ -112,7 +136,8 @@ class NetworkRepository(private val api: IDataSource) : INetworkRepository {
             image = item.image ?: "",
             episode = item.episode?.filterNotNull() ?: emptyList(),
             url = item.url ?: "",
-            created = item.created ?: ""
+            created = item.created ?: "",
+            isFavorite = favorites.find { it.id == item.id } != null
         )
 
     private fun mapLocation(item: Location) =

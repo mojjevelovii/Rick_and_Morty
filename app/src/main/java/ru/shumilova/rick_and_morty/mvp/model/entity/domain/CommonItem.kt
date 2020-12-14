@@ -4,7 +4,7 @@ import android.os.Parcelable
 import kotlinx.android.parcel.Parcelize
 import java.io.Serializable
 
-sealed class CommonItem:Serializable {
+sealed class CommonItem : Serializable {
     @Parcelize
     data class Character(
         val id: Int,
@@ -18,7 +18,8 @@ sealed class CommonItem:Serializable {
         val image: String,
         val episode: List<String>,
         val url: String,
-        val created: String
+        val created: String,
+        var isFavorite: Boolean = false
     ) : Parcelable, CommonItem() {
 
         @Parcelize

@@ -59,6 +59,13 @@
             android:layout_height="wrap_content"
             android:text="@string/episodes" />
 
+        <Button
+            android:id="@+id/btn_favorites"
+            style="@style/mainButton"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/favorites" />
+
     </LinearLayout>
 
 </androidx.constraintlayout.widget.ConstraintLayout>

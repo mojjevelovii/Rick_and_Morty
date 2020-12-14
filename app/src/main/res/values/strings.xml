@@ -15,5 +15,6 @@
     <string name="dimension">Dimension:</string>
     <string name="date_aired">Date aired:</string>
     <string name="episode">Episode:</string>
+    <string name="favorites">Favorites</string>
 
 </resources>

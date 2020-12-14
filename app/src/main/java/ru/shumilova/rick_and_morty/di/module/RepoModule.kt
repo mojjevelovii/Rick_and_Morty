@@ -3,6 +3,7 @@ package ru.shumilova.rick_and_morty.di.module
 import dagger.Module
 import dagger.Provides
 import ru.shumilova.rick_and_morty.mvp.model.api.IDataSource
+import ru.shumilova.rick_and_morty.mvp.model.data_base.DataBase
 import ru.shumilova.rick_and_morty.mvp.model.domain.INetworkRepository
 import ru.shumilova.rick_and_morty.mvp.model.domain.NetworkRepository
 import javax.inject.Singleton
@@ -11,5 +12,6 @@ import javax.inject.Singleton
 class RepoModule {
     @Singleton
     @Provides
-    fun networkRepo(api: IDataSource): INetworkRepository = NetworkRepository(api)
+    fun networkRepo(api: IDataSource, favoriteDB: DataBase): INetworkRepository =
+        NetworkRepository(api, favoriteDB)
 }
